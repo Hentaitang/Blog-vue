@@ -3,7 +3,7 @@
     <section class="avatar">
       <img src="http://cn.gravatar.com/avatar/1?s=128&d=identicon" alt="avatar">
       <h3>前端异步大揭秘</h3>
-      <p><rooter-link to="/user">若愚</rooter-link> 发布于3天前</p>
+      <p><router-link to="/user">若愚</router-link> 发布于3天前</p>
     </section>
     <section class="article">
       <h1 id="css-网格布局学习指南">CSS 网格布局学习指南</h1>
