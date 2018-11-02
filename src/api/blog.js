@@ -9,7 +9,7 @@ const URL = {
 }
 
 export default {
-    getBlogs({page=1, userId, atIndex} = {page: 1}){
+    getBlogs({page=1, userId, atIndex=true} = {page: 1, atIndex: true}){
         return request(URL.LIST, 'GET', {page, userId, atIndex})
     },
     getDetail(blogId){
