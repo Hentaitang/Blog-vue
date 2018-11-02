@@ -54,14 +54,16 @@ const router =  new Router({
 
 router.beforeEach((to, from, next)=>{
   if(to.matched.some(record => record.meta.requiresAuth)){
-    if(!Store.getters.isLogin){
-      next({
-        path: '/login',
-        query: {redirect: to.fullPath}
-      })
-    }else{
-      next()
-    }
+    Store.dispatch('checkLogin').then(isLogin => {
+      if(!isLogin){
+        next({
+          path: '/login',
+          query: {redirect: to.fullPath}
+        })
+      }else{
+        next()
+      }
+    })
   }else{
     next()
   }
