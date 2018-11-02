@@ -11,7 +11,13 @@
     <template v-if="isLogin">
       <h1>Let's share</h1>
       <i class="edit el-icon-edit-outline"></i>
-      <img class="avatar" src="http://cn.gravatar.com/avatar/1?s=128&d=identicon" alt="">       
+      <div class="avatar">
+        <img :src="user.avatar" :alt="user.username">
+        <ul>
+          <li><router-link to="/my">我的</router-link></li>
+          <li><a href="#" @click="onclick">注销</a></li>
+        </ul> 
+      </div>      
     </template>
   </header>
 </template>
@@ -32,12 +38,14 @@ export default {
   created(){
       this.checkLogin()
   },
-  method: {
+  methods: {
     ...mapActions([
       'checkLogin',
       'logout'
-    ])
-    
+    ]),
+    onclick(){
+      this.logout()
+    }
   }
 }
 </script>
@@ -85,11 +93,47 @@ export default {
       font-size: 30px;
     }
     .avatar{
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      margin-left: 15px;
-      border: 1px solid #fff;
+      position: relative;
+      img{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-left: 15px;
+        border: 1px solid #fff;
+      }
+
+      ul{
+        display: none;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        border: 1px solid #eaeaea;
+        background-color: #fff;
+
+        a{
+          text-decoration: none;
+          color: #333;
+          font-size: 12px;
+          padding: 5px 10px;
+          display: block
+        }
+
+        li:nth-child(1){
+          border-bottom: 1px solid #eaeaea;
+        }
+
+        li:nth-child(1):hover,
+        li:nth-child(2):hover{
+          background-color: #eaeaea;
+        }
+      }
+
+      &:hover ul{
+        display:block
+      }
     }
   }
 </style>
