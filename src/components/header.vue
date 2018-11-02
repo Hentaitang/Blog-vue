@@ -9,8 +9,8 @@
       </div>
     </template>
     <template v-if="isLogin">
-      <h1>Let's share</h1>
-      <i class="edit el-icon-edit-outline"></i>
+      <h1><router-link to="/">Let's share</router-link></h1>
+      <router-link to="/create"><i class="edit el-icon-edit-outline"></i></router-link>
       <div class="avatar">
         <img :src="user.avatar" :alt="user.username">
         <ul>
@@ -81,12 +81,15 @@ export default {
     display: flex;
     align-items: center;
     h1{
-      color: #fff;
       font-size: 40px;
       margin: 0;
       padding: 0;
       flex: 1;
       text-transform: uppercase;
+
+      a{
+        color: #fff;
+      }
     }
     .edit{
       color: #fff;
