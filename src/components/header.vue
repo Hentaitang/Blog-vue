@@ -1,7 +1,7 @@
 <template>
   <header :class="{'login': isLogin, 'no-login': !isLogin}">
     <template v-if="!isLogin">
-      <h1>Let's share</h1>
+      <h1><router-link to="/">Let's share</router-link></h1>
       <p>精品博客汇聚</p>
       <div class="bts">
         <router-link to="/login"><el-button>立即登录</el-button></router-link>
@@ -60,10 +60,13 @@ export default {
     justify-items: center;
 
     h1{
-      color: #fff;
       font-size: 40px;
       margin: 60px 0 0;
       text-transform: uppercase;
+
+      a{
+        color: #fff;
+      }
     }
 
     p{

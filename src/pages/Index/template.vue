@@ -8,12 +8,12 @@
             <figcaption>{{blog.user.username}}</figcaption>
           </router-link>
         </figure>
-        <h3>{{blog.title}} <span>{{blog.createdAt}}天前</span></h3>
+        <router-link :to="`/detail/${blog.id}`" class="content"><h3>{{blog.title}} <span>{{changeTime(blog.createdAt)}}</span></h3></router-link>
         <router-link :to="`/detail/${blog.id}`" class="content"><p>{{blog.description}}</p></router-link>
       </div>
     </section>
     <section class="changePage">
-      <el-pagination layout="prev, pager, next" :total="total" @current-change="pageChange">
+      <el-pagination layout="prev, pager, next" :total="total" @current-change="pageChange" :current-page.sync="page">
   </el-pagination>
     </section>
   </div>
