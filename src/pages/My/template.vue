@@ -1,42 +1,27 @@
 <template>
   <div id="my">
     <section class="user-info">
-      <img src="http://cn.gravatar.com/avatar/1?s=128&d=identicon" alt="avatar">
-      <h3>若愚</h3>
+      <img :src="user.avatar" :alt="user.username">
+      <h3>{{user.username}}</h3>
     </section>
     <section class="contents">
-      <div class="item">
+      <router-link class="item" v-for="blog in blogs" :to="`/detail/${blog.id}`" :key="blog.id">
         <div class="date">
-          <p class="day">20</p>
-          <p class="mouth">5月</p>
-          <p class="year">2018</p>
+          <p class="day">{{splitDate(blog.createdAt).date}}</p>
+          <p class="mouth">{{splitDate(blog.createdAt).month}}月</p>
+          <p class="year">{{splitDate(blog.createdAt).year}}</p>
         </div>
-        <h3>前端异步解密</h3>
-        <p>本文以一个简单的文件读写为例，讲解了异步的不同写法，包括 普通的 callback、ES2016中的Promise和Generator、 Node 用于解决回调的co 模块、ES2017中的async/await。适合初步接触 Node.js以及少量 ES6语法的同学阅读...</p>
+        <h3>{{blog.title}}</h3>
+        <p>{{blog.description}}</p>
         <div class="actions">
-          <router-link to="/edit">编辑</router-link>
-          <a href="#">删除</a>
+          <router-link :to="`/edit/${blog.id}`" class="edit">编辑</router-link>
+          <a href="#" @click.prevent="onDelete(blog.id)" class="delete">删除</a>
         </div>
-      </div>
-
-      <div class="item">
-        <div class="date">
-          <p class="day">20</p>
-          <p class="mouth">5月</p>
-          <p class="year">2018</p>
-        </div>
-        <h3>前端异步解密</h3>
-        <p>本文以一个简单的文件读写为例，讲解了异步的不同写法，包括 普通的 callback、ES2016中的Promise和Generator、 Node 用于解决回调的co 模块、ES2017中的async/await。适合初步接触 Node.js以及少量 ES6语法的同学阅读...</p>
-        <div class="actions">
-          <router-link to="/edit">编辑</router-link>
-          <a href="#">删除</a>
-        </div>
-      </div>
+      </router-link>
     </section>
-    <el-pagination
-    layout="prev, pager, next"
-    :total="1">
-  </el-pagination>
+    <section class="changePage">
+      <el-pagination  layout="prev, pager, next"  :total="total" @current-change="pageChange" :current-page.sync="page"></el-pagination>
+    </section>
   </div>
 </template>
 <script src="./template.js"></script>

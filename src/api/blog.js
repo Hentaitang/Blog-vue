@@ -12,6 +12,9 @@ export default {
     getBlogs({page=1, userId, atIndex=true} = {page: 1, atIndex: true}){
         return request(URL.LIST, 'GET', {page, userId, atIndex})
     },
+    userBlogs(userId, page=1){
+        return request(URL.LIST, 'GET', {page, userId})
+    },
     getDetail(blogId){
         return request(URL.DETAIL.replace(':blogId', blogId))
     },
