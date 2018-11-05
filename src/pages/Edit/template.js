@@ -6,12 +6,22 @@ export default {
         atIndex: false,
         title: '',
         description: '',
-        content: ''
+        content: '',
+        blogId: null
       }
+    },
+    created(){
+      this.blogId = this.$route.params.blogId
+      blog.getDetail(this.blogId).then((res)=>{
+        this.title = res.data.title
+        this.description = res.data.description
+        this.content = res.data.content
+        this.atIndex = res.data.atIndex
+      })
     },
     methods: {
       onUpdate(){
-        blog.create({title: this.title, content: this.content, description: this.description, atIndex: this.atIndex})
+        blog.update(this.blogId, {title: this.title, content: this.content, description: this.description, atIndex: this.atIndex})
         .then(res => {
           this.$message.success(res.msg)
           this.$router.push({path: `/detail/${res.data.id}`})
