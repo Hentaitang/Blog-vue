@@ -1,4 +1,5 @@
 # 使用vue技术实现多人博客项目
+[项目预览地址](https://hentaitang.github.io/Blog-vue/dist/#/)
 
 本项目使用Vue技术栈实现简易的多人共享博客。
 
