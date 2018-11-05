@@ -1,21 +1,7 @@
-# blog-client
+# 使用vue技术实现多人博客项目
 
-> A Vue.js project
+本项目使用Vue技术栈实现简易的多人共享博客。
+此项目为单页面应用，分为首页、详情页、登录注册页面、用户页面、个人主页、编辑、删除、创建博客。
+项目使用 Vue.js，涉及vue-cli、vue-router、vuex、axios、webpack、es6、element-ui等技术
 
-## Build Setup
-
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+![项目截图](https://i.loli.net/2018/11/05/5bdfeec3bd369.png)
